@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,17 @@
     <link rel="icon" href="he.png" type="image/png">
     <title>technicy reader</title>
 
+    <meta property="og:image" content="he.png">
+    <meta property="og:title" content="technicy-reader">
+    <meta property="og:description" content="poczuj to">
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,700&display=swap&subset=latin-ext" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700&display=swap&subset=latin-ext" rel="stylesheet">
 
     <!-- imports -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="menu">
         <div class="info"><span id="info-status"></span> <span id="info-warning"></span></div>
@@ -39,30 +44,32 @@
                     <i class="material-icons">list_alt</i>
                 </div>
             </div>
-    </div>
-    <div class="search">
-        <div class="szukaj">
-            <div class="search-tab">
-                <div class="search-title">Nick</div>
-                <div class="search-desc">Szukaj po nicku. Możesz podać sam nick, sam tag, lub oba. <br><b>np.</b> onioneq4#1175</div>
-                <input class="falowiec" id="s-nick">
-
-                <input type="checkbox" id="c-nick">
-                <label for="c-nick">Uwzględniaj wielkość liter</label>
-            </div>
-            <div class="search-tab">
-                <div class="search-title">Data</div>
-                <div class="search-desc">Szukaj po dacie. Godziny podawane w systemie 12-godzinnym. <br>*po updacie tutaj będzie fajny kalendarzyk z wyborem<br><b>Przykładowa data:</b> 04-lut-18 11:41 AM</div>
-                <input class="falowiec" id="s-data">
-            </div>
-            <div class="search-tab">
-                <div class="search-title">Treść wiadomości</div>
-                <div class="search-desc">Szukaj po prostu po treści wiadomości ofiary</div>
-                <textarea class="falowiec" id="s-tresc" rows="5" style="resize: none;"></textarea>
-                <input type="checkbox" id="c-tresc">
-                <label for="c-tresc">Uwzględniaj wielkość liter</label>
-            </div>
         </div>
+        <div class="search">
+            <div class="szukaj">
+                <div class="search-tab">
+                    <div class="search-title">Nick</div>
+                    <div class="search-desc">Szukaj po nicku. Możesz podać sam nick, sam tag, lub oba. <br><b>np.</b>
+                        onioneq4#1175</div>
+                    <input class="falowiec" id="s-nick">
+
+                    <input type="checkbox" id="c-nick">
+                    <label for="c-nick">Uwzględniaj wielkość liter</label>
+                </div>
+                <div class="search-tab">
+                    <div class="search-title">Data</div>
+                    <div class="search-desc">Szukaj po dacie. Godziny podawane w systemie 12-godzinnym. <br>*po updacie
+                        tutaj będzie fajny kalendarzyk z wyborem<br><b>Przykładowa data:</b> 04-lut-18 11:41 AM</div>
+                    <input class="falowiec" id="s-data">
+                </div>
+                <div class="search-tab">
+                    <div class="search-title">Treść wiadomości</div>
+                    <div class="search-desc">Szukaj po prostu po treści wiadomości ofiary</div>
+                    <textarea class="falowiec" id="s-tresc" rows="5" style="resize: none;"></textarea>
+                    <input type="checkbox" id="c-tresc">
+                    <label for="c-tresc">Uwzględniaj wielkość liter</label>
+                </div>
+            </div>
             <div class="btn-ct">
                 <button class="btn search-btn">Szukaj</button>
             </div>
@@ -89,4 +96,5 @@
     <script src="moment-with-locales.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
