@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="he.png" type="image/png">
+    <title>technicy reader</title>
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700&display=swap&subset=latin-ext" rel="stylesheet"> 
+
+    <!-- imports -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="menu">
+        <div class="info"><span id="info-status"></span> <span id="info-warning"></span></div>
+        <div class="choice">
+            <div class="tab tab-search">
+                <div class="tab-title">Szukaj</div>
+                <div class="tab-desc">Szukaj po treści wiadomości, dacie czy cokolwiek</div>
+                <div class="tab-icon">
+                    <i class="material-icons">search</i>
+                </div>
+            </div>
+            <div class="tab tab-users">
+                <div class="tab-title">Użytkownicy</div>
+                <div class="tab-desc">Wyświetl liste użytkowników i przeglądaj ich wiadomości</div>
+                <div class="tab-icon">
+                    <i class="material-icons">people</i>
+                </div>
+            </div>
+            <div class="tab tab-all">
+                <div class="tab-title">Wszystko</div>
+                <div class="tab-desc">Wyświetlaj wszystkie wiadomości. Laguje</div>
+                <div class="tab-icon">
+                    <i class="material-icons">list_alt</i>
+                </div>
+            </div>
+    </div>
+    <div class="search">
+        <div class="szukaj">
+            <div class="search-tab">
+                <div class="search-title">Nick</div>
+                <div class="search-desc">Szukaj po nicku. Możesz podać sam nick, sam tag, lub oba. <br><b>np.</b> onioneq4#1175</div>
+                <input class="falowiec" id="s-nick">
+
+                <input type="checkbox" id="c-nick">
+                <label for="c-nick">Uwzględniaj wielkość liter</label>
+            </div>
+            <div class="search-tab">
+                <div class="search-title">Data</div>
+                <div class="search-desc">Szukaj po dacie. Godziny podawane w systemie 12-godzinnym. <br>*po updacie tutaj będzie fajny kalendarzyk z wyborem<br><b>Przykładowa data:</b> 04-lut-18 11:41 AM</div>
+                <input class="falowiec" id="s-data">
+            </div>
+            <div class="search-tab">
+                <div class="search-title">Treść wiadomości</div>
+                <div class="search-desc">Szukaj po prostu po treści wiadomości ofiary</div>
+                <textarea class="falowiec" id="s-tresc" rows="5" style="resize: none;"></textarea>
+                <input type="checkbox" id="c-tresc">
+                <label for="c-tresc">Uwzględniaj wielkość liter</label>
+            </div>
+        </div>
+            <div class="btn-ct">
+                <button class="btn search-btn">Szukaj</button>
+            </div>
+        </div>
+        <div class="users">
+        </div>
+        <div class="sum">
+            <span><img src="he.png"></span>
+            <span>Wybierz opcję z menu powyżej i poczuj n o s t a l g i ę</span>
+            <span><b>Protip</b> Jak klikniesz na datę to wyświetlą ci się inne wiadomości w tym czasie</span>
+            <span>technicy-reader by <a href="https://github.com/pizza61">pizza</a></span>
+        </div>
+    </div>
+    <div class="view">
+        <div class="top">
+            <div class="top-button">Wróć</div>
+            <div class="top-title">Wyświetlam <span id="results-r"></span> z <span id="results"></span> wyników</div>
+        </div>
+        <div class="reader">
+
+        </div>
+    </div>
+
+    <script src="moment-with-locales.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

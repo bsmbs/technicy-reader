@@ -1,0 +1,299 @@
+body {
+    margin: 0;
+    font-family: 'Muli', sans-serif;
+    color: #e2e2e2;
+    background: #2f3136;
+}
+
+.choice {
+    position: sticky;
+    z-index: 2;
+    display: flex;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.info {
+    padding: 10px;
+    background: #01579b;
+    color: white;
+}
+
+.info-warning {
+    background: #91101a;
+}
+
+.tab {
+    padding: 20px;
+    user-select: none;
+    cursor: pointer;
+    flex-grow: 1;
+    color: white;
+    transition: 200ms;
+}
+
+.tab:nth-child(1) {
+    background: #1565c0;
+}
+
+.tab:nth-child(2) {
+    background: #01579b;
+}
+
+.tab:nth-child(3) {
+    background: #004d40;
+}
+
+.tab:hover {
+    flex-grow: 2;
+}
+
+.tab-title {
+    font-weight: 700;
+    font-size: 200%;
+}
+
+.tab-icon {
+    bottom: 0;
+}
+
+.tab-icon i {
+    font-size: 92px;
+}
+
+.reader {
+    background: #36393f;
+}
+
+.top {
+    display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,.2),0 1.5px 0 rgba(0,0,0,.05),0 2px 0 rgba(0,0,0,.05);
+}
+
+.top-button {
+    padding: 15px 60px;
+    color: white;
+    background: #2f3136;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+}
+
+.top-button:hover {
+    transform: scale(1.1);
+}
+
+.top-title {
+    background: #36393f;
+    color: white;
+    flex-grow: 2;
+    padding: 15px;
+}
+
+.szukaj {
+    display: flex;
+}
+
+.search-tab {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 15px;
+}
+
+.search-title {
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.btn-more {
+	height: 30px;
+	border: 1px solid #e3e5e7;
+	width: 100%;
+	color: #7289da;
+	text-align: center;
+	flex-grow: 1;
+	font-size: 12px;
+	font-weight: 500;
+	border-radius: 3px;
+	text-transform: uppercase;
+    background: #32353b;
+    border: 1px solid #2f3136;
+    cursor: pointer;
+    outline: none;
+    transition: height 200ms;
+}
+
+.btn-more:hover {
+    height: 35px;
+}
+
+.message {
+    padding: 15px;
+    border-bottom: 1px solid hsla(0,0%,100%,.04);
+}
+
+.message-author {
+    color: #1bb395;
+    font-weight: 700;
+}
+.message-date {
+    color: hsla(0,0%,100%,.2);
+    font-size: 0.75rem;
+    margin-left: .3rem;
+}
+
+.message-date:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.message-image {
+    max-width: 600px;
+    max-height: 400px;
+    margin-top: 3px;
+    display: block;
+}
+
+.message-video {
+    border-radius: 5px;
+    margin-top: 5px;
+    display: block;
+    width: 400px;
+    height: 225px;
+}
+
+.message-content {
+    color: #b2b4b6;
+    word-wrap: break-word;
+}
+
+.message-content a {
+    color: #0096cf;
+    text-decoration: none;
+}
+
+.message-content a:hover {
+    text-decoration: underline;
+}
+
+.users {
+    margin: 20px;
+    display: grid;
+    border-radius: 10px;
+    grid-template-columns: repeat(4, 25%);
+}
+
+.user {
+    border: 1px solid hsla(0,0%,100%,.04);
+    padding: 20px;
+    background: #2f3136;
+    color: white;
+    transition: 200ms;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.user:hover {
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+
+.user-name {
+    color: #2ecc71;
+    font-weight: 700;
+}
+
+.admin {
+    color: #e74c3c;
+}
+
+.falowiec {
+    outline: none;
+    display: block;
+    margin-top: 10px;
+    width: 80%;
+    padding: 12px 15px;
+    font-family: "PT Sans", sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    color: #404040;
+    border-radius: 3px;
+
+    background: #32353b;
+    color: white;
+    border: 2px solid #555;
+  }
+
+.falowiec:focus {
+    box-shadow: 0 0 3px 1px #0073b1;
+    border-color: #0073b1;
+}
+
+.btn {
+    margin-left: 10px;
+    background: #0073b1;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: 600;
+    font-size: 90%;
+    padding: 8px 20px;
+    transition: 200ms;
+}
+
+.btn:hover {
+    background: rgba(0, 115, 177, 0.8);
+}
+
+.btn-ct {
+    display: flex;
+    justify-content: center;
+}
+
+.search-btn {
+    padding: 8px 96px;
+}
+
+.sum img {
+    margin-top: 20px;
+    border-radius: 3px;
+}
+.sum a {
+    color: gold;
+    text-decoration: none;
+}
+.sum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+@media screen and (max-width: 768px) {
+    .szukaj {
+        flex-direction: column;
+    }
+
+    .tab-icon i {
+        font-size: 32px;
+    }
+
+    .tab-desc {
+        display: none;
+    }
+
+    .tab-title {
+        font-size: 100%;
+    }
+
+    .users {
+        grid-template-columns: 100%;
+    }
+}
