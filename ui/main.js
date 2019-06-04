@@ -1,5 +1,5 @@
 // sum init
-const urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 
 let messages = [];
 let users = [];
@@ -10,64 +10,64 @@ clear();
 document.querySelector('.sum').style.display = 'flex';
 
 fetch("/load")
-.then(resp => resp.json())
-.then(data => {
-    let mode;
+    .then(resp => resp.json())
+    .then(data => {
+        let mode;
 
-    // status
-    //messages = data;
-    if(data[0].lines[0] == "==============================================================") {
-        document.querySelector('#info-warning').innerText = 'Uwaga! Plik zapisany w nowej wersji, która nie jest do końca wspierana. Niektóre wiadomości mogą się nie wyświetlać.'
-        document.querySelector('.info').classList.add('info-warning');
-        mode = 2;
-        data.shift();
-    } else {
-        mode = 1;
-    }
-
-    let lastMessageAuthor;
-    data.forEach((m, i) => {
-        if(m.lines == null) return
-
-        let author;
-        let date;
-
-        if(mode == 1) {
-            let ad = m.lines[0].split("  ");
-
-            author = ad[0];
-            date = ad[1];
-        } else if (mode == 2) {
-            let ad = m.lines[0].split("] ")
-            date = ad[0];
-            author = ad[1];
-
-            if(author) lastMessageAuthor = author;
-            if(!author) author = lastMessageAuthor;
-        }
-        
-        let uns = users.find(user => user.name == author)
-        if(uns) {
-            uns.messages++;
+        // status
+        //messages = data;
+        if (data[0].lines[0] == "==============================================================") {
+            document.querySelector('#info-warning').innerText = 'Uwaga! Plik zapisany w nowej wersji, która nie jest do końca wspierana. Niektóre wiadomości mogą się nie wyświetlać.'
+            document.querySelector('.info').classList.add('info-warning');
+            mode = 2;
+            data.shift();
         } else {
-            if(author.match(/#[0-9]{4}/g)) users.push({
-                name: author,
-                messages: 1
-            })
+            mode = 1;
         }
 
-        let msg = m.lines.slice(1).join("\n")
+        let lastMessageAuthor;
+        data.forEach((m, i) => {
+            if (m.lines == null) return
 
-        messages.push({
-            author,
-            date,
-            msg
+            let author;
+            let date;
+
+            if (mode == 1) {
+                let ad = m.lines[0].split("  ");
+
+                author = ad[0];
+                date = ad[1];
+            } else if (mode == 2) {
+                let ad = m.lines[0].split("] ")
+                date = ad[0];
+                author = ad[1];
+
+                if (author) lastMessageAuthor = author;
+                if (!author) author = lastMessageAuthor;
+            }
+
+            let uns = users.find(user => user.name == author)
+            if (uns) {
+                uns.messages++;
+            } else {
+                if (author.match(/#[0-9]{4}/g)) users.push({
+                    name: author,
+                    messages: 1
+                })
+            }
+
+            let msg = m.lines.slice(1).join("\n")
+
+            messages.push({
+                author,
+                date,
+                msg
+            })
+
+            //if(author.includes("onioneq4")) console.log("o pizza")
         })
-
-        //if(author.includes("onioneq4")) console.log("o pizza")
+        document.querySelector('#info-status').innerText = 'Wczytano ' + messages.length + ' wiadomości.';
     })
-    document.querySelector('#info-status').innerText = 'Wczytano '+messages.length+' wiadomości.';
-})
 
 // KARTY
 
@@ -107,7 +107,7 @@ document.querySelector('.search-btn').addEventListener('click', () => {
 function clear() {
     let reader = document.querySelector('.reader')
 
-    while(reader.firstChild) {
+    while (reader.firstChild) {
         reader.removeChild(reader.firstChild)
     }
 
@@ -127,20 +127,20 @@ function showMessages(results, paginate) {
         document.querySelector('.menu').style.display = 'none';
         document.querySelector('.view').style.display = 'block';
         let reader = document.querySelector('.reader')
-    
-        while(reader.firstChild) {
+
+        while (reader.firstChild) {
             reader.removeChild(reader.firstChild)
         }
-    
+
         document.querySelector('#results').innerText = results.length;
-    
-        if(paginate) {
-    
+
+        if (paginate) {
+
             reader.lastSlice = -10;
-    
-            if(results.slice(-11, reader.lastSlice).length > 0) {
+
+            if (results.slice(-11, reader.lastSlice).length > 0) {
                 document.querySelector('#results-r').innerText = 10;
-            
+
                 let btn = document.createElement('button');
                 btn.innerText = 'wczytaj więcej wiadomości';
                 btn.className = 'btn-more';
@@ -149,14 +149,14 @@ function showMessages(results, paginate) {
             } else {
                 document.querySelector('#results-r').innerText = results.length;
             }
-    
+
             results.slice(-10).forEach(message => {
                 reader.appendChild(insertMessage(message));
             })
             resolve();
         } else {
             document.querySelector('#results-r').innerText = results.length;
-            
+
             results.forEach(message => {
                 reader.appendChild(insertMessage(message));
             })
@@ -168,7 +168,7 @@ function showMessages(results, paginate) {
 function insertMessage(message) {
     let messageNode = document.createElement('div');
     messageNode.className = 'message';
-    
+
     let messageData = document.createElement('div');
     messageData.className = 'message-data';
 
@@ -182,43 +182,43 @@ function insertMessage(message) {
 
     let messageContent = document.createElement('span');
     messageContent.className = 'message-content';
-    
+
     let imgUrl = "";
     let videoUrl = "";
 
     let msg = message.msg.replace(urlRegex, url => {
         let urlObj = new URL(url);
-        if(urlObj.host == 'cdn.discordapp.com') {
+        if (urlObj.host == 'cdn.discordapp.com') {
             imgUrl = urlObj.href;
         }
-        if(urlObj.host == 'youtu.be') {
+        if (urlObj.host == 'youtu.be') {
             videoUrl = urlObj.pathname;
         }
-        if(urlObj.host == 'www.youtube.com' || urlObj.host == 'm.youtube.com') {
-            if(urlObj.searchParams.get('v')) videoUrl = urlObj.searchParams.get('v');
+        if (urlObj.host == 'www.youtube.com' || urlObj.host == 'm.youtube.com') {
+            if (urlObj.searchParams.get('v')) videoUrl = urlObj.searchParams.get('v');
         }
         return `<a href=${url} target="_blank">${url}</a>`
     })
-    
-    if(msg != message.msg) messageContent.innerHTML = msg;
+
+    if (msg != message.msg) messageContent.innerHTML = msg;
     else messageContent.innerText = msg;
-    
+
     messageDate.addEventListener('click', () => nearby(message.date, messageContent.innerText))
 
     messageData.appendChild(messageAuthor);
     messageData.appendChild(messageDate);
-    
+
     messageNode.appendChild(messageData);
     messageNode.appendChild(messageContent);
-    if(imgUrl.length > 0) {
+    if (imgUrl.length > 0) {
         let imgNode = document.createElement("img");
         imgNode.src = imgUrl;
         imgNode.className = 'message-image';
         messageNode.appendChild(imgNode);
     }
-    if(videoUrl.length > 0) {
+    if (videoUrl.length > 0) {
         let videoNode = document.createElement("iframe");
-        videoNode.src = 'https://youtube.com/embed/'+videoUrl;
+        videoNode.src = 'https://youtube.com/embed/' + videoUrl;
         videoNode.frameBorder = 0;
         videoNode.className = 'message-video';
         messageNode.appendChild(videoNode);
@@ -230,8 +230,8 @@ function insertMessage(message) {
 function loadMore(e, reader, results) {
     let lastScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-    let newMsgs = results.slice(reader.lastSlice-10, reader.lastSlice)
-    
+    let newMsgs = results.slice(reader.lastSlice - 10, reader.lastSlice)
+
     newMsgs.reverse().forEach(message => {
         reader.insertBefore(insertMessage(message), reader.firstChild);
     })
@@ -240,12 +240,14 @@ function loadMore(e, reader, results) {
     document.querySelector('#results-r').innerText = current + newMsgs.length;
 
     e.target.remove();
-    
-    reader.lastSlice = reader.lastSlice-10;
 
-    window.scrollTo({top: document.documentElement.scrollHeight - document.documentElement.clientHeight-lastScroll});
+    reader.lastSlice = reader.lastSlice - 10;
 
-    if(results.slice(reader.lastSlice-1, reader.lastSlice).length > 0) {
+    window.scrollTo({
+        top: document.documentElement.scrollHeight - document.documentElement.clientHeight - lastScroll
+    });
+
+    if (results.slice(reader.lastSlice - 1, reader.lastSlice).length > 0) {
         let btn = document.createElement('button');
         btn.innerText = 'wczytaj więcej wiadomości';
         btn.className = 'btn-more';
@@ -262,36 +264,38 @@ function search(nick, data, tresc, cnick, ctresc) {
     messages.forEach(m => {
         let match = false;
 
-        if(nick.length > 0) {
-            if(cnick) {
+        if (nick.length > 0) {
+            if (cnick) {
                 // uwzglednia wielkosc liter
-                if(m.author.includes(nick)) match = true;
+                if (m.author.includes(nick)) match = true;
                 else return;
             } else {
                 // nie uwzglednia
-                if((m.author.toLowerCase()).includes(nick.toLowerCase())) match = true;
+                if ((m.author.toLowerCase()).includes(nick.toLowerCase())) match = true;
                 else return;
             }
         }
 
-        if(data.length > 0) {
-            if(!m.date) return;
-            if(m.date.includes(data)) match = true;
+        if (data.length > 0) {
+            if (!m.date) return;
+            if (m.date.includes(data)) match = true;
             else return;
         }
 
-        if(tresc.length > 0) {
-            if(ctresc) {
+        if (tresc.length > 0) {
+            if (ctresc) {
                 // uwzglednia wielkosc liter
-                if(m.msg.includes(tresc)) match = true;
+                if (m.msg.includes(tresc)) match = true;
                 else return;
             } else {
-                if(m.msg.toLowerCase().includes(tresc.toLowerCase())) match = true;
+                if (m.msg.toLowerCase().includes(tresc.toLowerCase())) match = true;
                 else return;
             }
         }
 
-        if(match) {
+        if (match) {
+            if (!m.date) return;
+
             let pushObj = {
                 author: m.author,
                 date: moment(m.date.substr(1).slice(0, -1), "DD-MMM-YY hh:mm a").format("D.MM.YYYY o HH:mm"),
@@ -309,7 +313,7 @@ function searchAll() {
     let results = [];
 
     messages.forEach(m => {
-        if(!m.date) return;
+        if (!m.date) return;
 
         let pushObj = {
             author: m.author,
@@ -328,7 +332,7 @@ function nearby(centertel, dat) {
     let results = [];
 
     for (i = 0; i <= 30; i++) {
-        let shift = moment(time, 'D.MM.YYYY o HH:mm').add(i-15, 'minutes').format('DD-MMM-YY hh:mm A');
+        let shift = moment(time, 'D.MM.YYYY o HH:mm').add(i - 15, 'minutes').format('DD-MMM-YY hh:mm A');
         let msgs = search('', shift, '', false, false);
 
         results = results.concat(msgs)
@@ -336,31 +340,34 @@ function nearby(centertel, dat) {
 
     showMessages(results, false).then(() => {
         let center = document.querySelectorAll('.message-content');
- 
+
         center.forEach(el => {
-            if(el.innerText == dat) {
+            if (el.innerText == dat) {
                 el.parentNode.style.background = '#3d414f'
-                el.scrollIntoView({ block: 'center', behavior: "smooth"})
+                el.scrollIntoView({
+                    block: 'center',
+                    behavior: "smooth"
+                })
                 return;
             }
         })
-        
+
     })
-    
-    
+
+
 }
 
 // funkcja użytkownicy
 function usersInit() {
     let ct = document.querySelector('.users');
     // clear
-    while(ct.firstChild) {
+    while (ct.firstChild) {
         ct.removeChild(ct.firstChild)
     }
 
     let admins = ['_roofik_#2600', 'Dąb#5080', 'onioneq4#1175', 'mati82821#5949'];
 
-    users.sort((a, b) => b.messages-a.messages).forEach(user => {
+    users.sort((a, b) => b.messages - a.messages).forEach(user => {
         let d = document.createElement('div');
         d.className = 'user'
 
@@ -368,10 +375,10 @@ function usersInit() {
         let messages = document.createElement('div');
 
         name.innerText = user.name;
-        messages.innerText = user.messages+' wiadomości';
+        messages.innerText = user.messages + ' wiadomości';
 
         name.className = 'user-name';
-        if(admins.indexOf(user.name) >= 0) name.classList.add('admin');
+        if (admins.indexOf(user.name) >= 0) name.classList.add('admin');
 
         messages.className = 'messages';
 
@@ -379,7 +386,9 @@ function usersInit() {
         d.appendChild(messages);
 
         d.addEventListener('click', () => {
-            window.scrollTo({ top: 0 })
+            window.scrollTo({
+                top: 0
+            })
             let msgs = search(user.name, '', '', false, false);
             showMessages(msgs, true);
         })
